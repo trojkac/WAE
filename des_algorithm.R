@@ -29,14 +29,34 @@ des_algorithm <- function(par, fn, lower, upper, max_eval) {
   best_par <- NULL
   best_value <- Inf
   
+  # initialize non-tunable parameters
   t <- 1
   Delta <- 0
-  f <- 1/sqrt(2)
   delta <- expected_norm_vec(rnorm(dim, 0, diag(dim)))
   
-  # initialize first random population
-
+  # initialize tunable parameters (and default test values)
+  f <- 1/sqrt(2)
+  lambda <- 10
+  mu <- 5
+  dim <- 2
+  lower <- -100
+  upper <- 100
   
+  # initialize first random population
+  P <- matrix(runif(lambda*dim, min=lower, max=upper),nrow=lambda,ncol=dim)
+  
+  # single test iteration
+  P_midpoint <- colSums(P,lambda,dim)
+  P_midpoint_val <- fn(P_midpoint)
+  agent_vals <- apply(P,1,fn)
+  
+}
+
+
+random_alg <- function(par, fn, lower, upper, max_eval) {
+  dim <- length(upper)
+  best_par <- NULL
+  best_value <- Inf
   
   for (i in 1:max_eval) {
     par <- runif(dim, min=lower, max=upper)
