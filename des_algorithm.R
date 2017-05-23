@@ -34,23 +34,31 @@ des_algorithm <- function(par, fn, lower, upper, max_eval) {
   Delta <- 0
   delta <- expected_norm_vec(rnorm(dim, 0, diag(dim)))
   
-  # initialize tunable parameters (and default test values)
+  # initialize tunable parameters (with default values)
   f <- 1/sqrt(2)
   lambda <- 10
   mu <- 5
-  dim <- 2
-  lower <- -100
-  upper <- 100
+  c <- 4/(dim+4)
+  H <- 6+3*sqrt(dim)
   
   # initialize first random population
   P <- matrix(runif(lambda*dim, min=lower, max=upper),nrow=lambda,ncol=dim)
   
   # single test iteration
-  P_midpoint <- colSums(P,lambda,dim)
+  P_midpoint <- colSums(P)/lambda
   P_midpoint_val <- fn(P_midpoint)
-  agent_vals <- apply(P,1,fn)
+  vals_and_agents <- cbind(apply(P,1,fn), P)
+  P_ordered <- vals_and_agents[order(-vals_and_agents[,1]),]
+  mu_midpoint <- colSums(head(P_ordered[,-1], mu)) / mu
+  Delta <- rbind(Delta, (1-c) * tail(Delta,1) + c * (mu_midpoint - P_midpoint))
   
+  for (i in 1:lambda) {
+    
+  }
+  t <- t + 1
 }
+
+bbo_benchmark(des_algorithm, "l-bfgs-b", "optim_l-bfgs-b",budget=1)
 
 
 random_alg <- function(par, fn, lower, upper, max_eval) {
