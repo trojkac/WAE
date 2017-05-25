@@ -69,9 +69,9 @@ des_algorithm <- function(par, fn, lower, upper, max_eval, tunable_parameters = 
   
   repeat{
     P_midpoint <- colSums(P)/lambda
-    P_midpoint_val <- fn(P_midpoint)
+    P_midpoint_val <- q(P_midpoint)
     vals_and_agents <- cbind(apply(P,1,q), P)
-    evals <- evals + lambda
+    evals <- evals + lambda + 1
     P_ordered <- vals_and_agents[order(vals_and_agents[,1]),]
     mu_midpoint <- colSums(head(P_ordered[,-1], mu)) / mu
     

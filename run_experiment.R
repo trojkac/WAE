@@ -17,6 +17,6 @@ des_optimizer <- function(par, fun, lower, upper, max_eval) {
 
 run_benchmark <- function() {
   alg_id <- sprintf("default_des")
-  dir <- sprintf("data/%s",alg_id)
-  bbo_benchmark(des_optimizer, alg_id, dir,budget=10000, dimensions = c(2,3,5,10))
+  dir <- sprintf("data/%s_%s",alg_id,format(Sys.time(), "%d%b%X%Y"))
+  bbo_benchmark(des_optimizer, alg_id, dir,budget=10000, dimensions = c(2,3,5,10,20,40))
 }
