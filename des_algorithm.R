@@ -34,6 +34,10 @@ des_algorithm <- function(par, fn, lower, upper, max_eval, tunable_parameters = 
     return((sum(sigma)/numeric(dim))<epsilon || evals > max_eval)
   }
   
+  update_history <- function(new_population, history){
+    return(array(c(new_population,history),dim=c(lambda,dim,H)))
+  }
+  
   dim <- length(upper)
   best_par <- NULL
   best_value <- Inf
@@ -45,21 +49,34 @@ des_algorithm <- function(par, fn, lower, upper, max_eval, tunable_parameters = 
   delta <- expected_norm_vec(rnorm(dim, 0, 1))
   
   # initialize tunable parameters (with default values)
-  if(is.null(tunable_parameters)) {
     f <- 1/sqrt(2)
     lambda <- 10
     mu <- 5
     c <- 4/(dim+4)
     H <- 6+3*sqrt(dim)
     epsilon <- 1e-8/expected_norm_vec(rnorm(dim,0,1))
-  } else {
-    f <- tunable_parameters[['f']]
-    lambda <- tunable_parameters[['lambda']]
-    mu <- tunable_parameters[['mu']]
-    c <- tunable_parameters[['c']]
-    H <- tunable_parameters[['H']]
-    epsilon <- tunable_parameters[['epsilon']]
-  }
+    
+    if(!is.null(tunable_parameters)){
+      if(!is.null(tunable_parameters[['f']])) {
+        f <- tunable_parameters[['f']]
+      }
+      if(!is.null(tunable_parameters[['lambda']])) {
+        lambda <- tunable_parameters[['lambda']]
+      }
+      if(!is.null(tunable_parameters[['mu']])) {
+        mu <- tunable_parameters[['mu']]
+      }
+      if(!is.null(tunable_parameters[['c']])) {
+        c <- tunable_parameters[['c']]
+      }
+      if(!is.null(tunable_parameters[['H']])) {
+        H <- tunable_parameters[['H']]
+      }
+      if(!is.null(tunable_parameters[['epsilon']])) {
+        epsilon <- tunable_parameters[['epsilon']]
+      } 
+    }
+    
   # initialize population history
   P.history <- array(0,dim=c(lambda, dim, H))
   
@@ -81,7 +98,7 @@ des_algorithm <- function(par, fn, lower, upper, max_eval, tunable_parameters = 
     }
     Delta <- (1-c) * Delta + c * (mu_midpoint - P_midpoint)
     
-    P.history <- array(c(P_ordered[,-1],P.history[,,-H]),dim=c(lambda,dim,H))
+    P.history <- update_history(P_ordered[,-1], P.history[,,-H])
     for (i in 1:lambda) {
       # it's 0,H-1 in the paper but we use indexing from 1 to H for historical populations
       # h = 1 is for current population (t), H is for earliest stored (t-H+1) 
@@ -107,3 +124,4 @@ expected_norm_vec <- function(x){
   denominator = gamma(N/2)
   return(numerator/denominator)
 }
+
