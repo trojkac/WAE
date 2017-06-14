@@ -6,7 +6,7 @@
 ##' @param upper Upper bounds of search space.
 ##' @param max_eval Maximium number of function evaluations to perform.
 ##' @param tunable_parameters list of tunable parameters which overrides hardcoded ones. Defaults to NULL (no overriding)
-##' @return Best solution found.
+##' @return List consisting of keys par - coordinates of best solution found and value - value of best solution .
 ##'
 ##' @export
 ##'

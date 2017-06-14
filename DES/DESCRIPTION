@@ -1,0 +1,11 @@
+Package: DES
+Title: Differential Evolution Strategy 
+Version: 0.0.0.9000
+Authors@R: c(person("Kacper", "Trojanowski", email = "trojanowskik@student.mini.pw.edu.pl", role = c("aut", "cre")),
+            person("Kamil", "Brenski", email = "3psilion@gmail.com ", role = c("aut")))
+Description: Implementation of Differential Evolution Strategy (K. Breński, K. Trojanowski), algorithm invented by D. Jagodzinski, J. Arabas
+Depends: R (>= 3.4.0)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
