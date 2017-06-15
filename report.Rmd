@@ -1,0 +1,37 @@
+---
+title: "WAE - raport z eksperymentów"
+author: "K. Breński, K. Trojanowski"
+date: "June 15, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Algorithm implementation
+We have fulfilled our assignment by implementing modified Differential Evolution algorithm. One of our tasks was to prepare code in the form of library so we have prepared R package containing our implementation. As described in preliminary documentation we have used COCO BBOB 2015 benchmarking framework to test implemented algorithm.
+
+##Experiments
+In order to test our algorithm we have planned to run BBOB multiple times for different parameters configuration. We have tested most notable parameters which we decided are:
+
+* $\lambda$ - population size
+* $\mu$ - offspring number
+* $H$ - time horizon of archive
+
+Rest of the parameters where set to defult values taken from the original paper.
+
+We decided to test each value of $\mu$ and $H$ with each value of $\lambda$.
+
+Additionally we have performed benchmarking of Differential Evolution algorithm from __DEoptim__ R package to compare our implementation of DES modification with standard form of DE.
+
+### Parameters and labeling
+We have tested 16 different configurations of tunable parameters. To keep track of them we hav labeled each $\lambda$ value with one of the letters $a,b,c$ and each $\mu$ or $H$ modification with digit from $1$ to $6$. Legend of the parameters and values we used is shown below:
+
+
+### BBOB 2015 benchmark setup
+ We used standard benchmark functions set consisting of 24 noise-less functions $f_i: R^n \rightarrow R, i=1,2,...,24$ with 15 instances each. Those function instances were optimized for dimensions $n=2,3,5,10,20,40$. We set budget for experiments to $10000$, maximum function evaluations per problem was equal to $MaxFEvals=BUDGET*n$ which may be not identical to evaluations per algorithm run because R language interface for BBOB implemented mechanism of independent restarts.
+
+##Wyniki
+
+##Wnioski
