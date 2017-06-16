@@ -1,6 +1,6 @@
 ---
-title: "WAE - raport z eksperyment?w"
-author: "K. Bre?ski, K. Trojanowski"
+title: "WAE - raport z eksperymentów"
+author: "K. Breński, K. Trojanowski"
 date: "June 15, 2017"
 output:
   html_document: default
