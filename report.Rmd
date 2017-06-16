@@ -70,4 +70,4 @@ Standard Differential Evolution algorithm from DEoptim library performs better t
 
 ## Conclusions
 
-The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for ill conditioned functions as it managed to read all targets, and worst for multi-modal functions abd weak structure functions.
+The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for ill conditioned functions as it managed to read all targets, and worst for multi-modal functions and weak structure functions.
