@@ -51,16 +51,16 @@ As we can see in the summary above most of the parameter configurations gave sim
 |||
 |-|-|
 |![](plots/pprldistr_05D_noiselessall.svg)|![](plots/pprldistr_05D_lcond.svg)  |
-|![](plots/pprld3comp_05D_noiselessall.svg)|xxx|
+|XXX|xxx|
 
 The top left plot shows how many targets were reached for all 24 functions.The top right plot shows us that DES performed well for ill conditioned functions and managed to reach all targets.
 
 
 
 ### DEoptim comparison
-
+![](plots/pprld3comp_05D_noiselessall.svg)
 
 
 ## Conclusions
 
-The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for function #? //TODO ktore? and worst for function #? //TODO ktore?.
+The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for ill conditioned functions as it managed to read all targets, and worst for multi-modal functions.
