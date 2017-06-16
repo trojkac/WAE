@@ -45,22 +45,27 @@ All combinations of letters and numbers where used for testing, which results in
 ## Benchmark results
 ![](plots/pprldmany_05D_noiselessall.svg)
 
-As we can see in the summary above most of the parameter configurations gave similar results except configuration $b3$ which stands for $\lambda=4n,\ \mu=\frac{\lambda}{2}$. It has doubled the offspring number in comparison with the default configuration, which is $b4$ and has the pamameters of $\lambda=4n,\mu=\frac{\lambda}{2}$ and $H=6+3\sqrt{n}$. Slightly better results were also observed with configurations labeled: $b6(\lambda=4n,H=6+3n)$ and $b5(\lambda=4n,H=6+6\sqrt{n})$. Both of which had larger time horizon than our reference parameters set. It seems the the population size of $4n$ is a rather good choice as configurations with this parameter were almost always on top, with one exception being $b1$ which performbed badly most likley due the the very small number of offspring choosen in the selection phase of the algorithm. 
+As we can see in the summary above most of the parameter configurations gave similar results except configuration $b3$ which stands for $\lambda=4n,\ \mu=\frac{\lambda}{2}$. It has doubled the offspring number in comparison with the default configuration, which is $b4$ and has the pamameters of $\lambda=4n,\mu=\frac{\lambda}{2}$ and $H=6+3\sqrt{n}$. Slightly better results were also observed with configurations labeled: $b6(\lambda=4n,H=6+3n)$ and $b5(\lambda=4n,H=6+6\sqrt{n})$. Both of which had larger time horizon than our reference parameters set. It seems the the population size of $4n$ is a rather good choice as configurations with this parameter were almost always on top, with one exception being $b1$ which performed badly most likley due a rather large number of offspring choosen in the selection phase of the algorithm. 
 
 ### Best configuration results
 |||
 |-|-|
 |![](plots/pprldistr_05D_noiselessall.svg)|![](plots/pprldistr_05D_lcond.svg)  |
-|XXX|xxx|
+|![](plots/pprldistr_05D_multi.svg)|![](plots/pprldistr_05D_mult2.svg)|
 
-The top left plot shows how many targets were reached for all 24 functions.The top right plot shows us that DES performed well for ill conditioned functions and managed to reach all targets.
+
+The top left plot shows how many targets were reached for all 24 functions.The top right plot shows us that DES performed well for ill conditioned functions and managed to reach all targets. Bottom charts show performance for multimodal and weak structure functions.
 
 
 
 ### DEoptim comparison
-![](plots/pprld3comp_05D_noiselessall.svg)
 
+|||
+|-|-|
+|![](plots/pprld3comp_02D_noiselessall.svg)|![](plots/pprld3comp_05D_noiselessall.svg)|
+
+Standard Differential Evolution algorithm from DEoptim library performs better than our DES algorithm for $n=2,3$ dimension problems. DES outperforms DEoptim in higher dimension problems for $n=5,10,20$. Significant difference between these two algorithms can be observed especially for ill-conditioned and multimodal functions.
 
 ## Conclusions
 
-The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for ill conditioned functions as it managed to read all targets, and worst for multi-modal functions.
+The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for ill conditioned functions as it managed to read all targets, and worst for multi-modal functions abd weak structure functions.
