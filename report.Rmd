@@ -8,8 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(out.width="100px", dpi=120)
-library(svglite)
-library(grid)
 ```
 
 ## Algorithm implementation
@@ -35,7 +33,7 @@ We have tested 16 different configurations of tunable parameters. To keep track 
 | Parameter      | |||
 | -------------- | ------------------ |-|-|
 | $\lambda$ | $a=2n$  |  $b=4n$ | $c=4\sqrt{n}$  |
-| $\mu$ | $1=\frac{\lambda}{8}$ | $2=\frac{\lambda}{4}$ |$3=\frac{\lambda}{2}$ |
+| $\mu$ | $1=\lambda$ | $2=\frac{\lambda}{4}$ |$3=\frac{\lambda}{2}$ |
 |$H$|$4=6+3\sqrt{n}$|$5=6+6\sqrt{n}$|$6=6+3n$|
 
 All combinations of letters and numbers where used for testing, which results in 16 unique configurations. 
@@ -54,7 +52,15 @@ As we can see in the summary above most of the parameter configurations gave sim
 [//]: # (kam: ppdata/2compare/ppdata/des_b3_08cze2101/pprldistr_05D_noiselessall.svg)
 [//]: # (kac: data/ppdata/des_b3_08cze2101/pprldistr_05D_noiselessall.svg)
 ![](data/ppdata/des_b3_08cze2101/pprldistr_05D_noiselessall.svg)
+As we can see in the summary above most of the parameters configurations gave similar results except configuration $b3$ which stands for $\lambda=4n,\ \mu=\lambda/2$. It has doubled offspring number in comparison with default configuration. Also better than default were configurations labeled: $b6$ and $b5$ both of which had larger time horizon than our reference parameters set.
 
+Algorithm performs well at ill conditioned functions reaching all targets.
+
+![](plots/pprldistr_05D_lcond.svg)  
+
+### DEoptim comparison
+
+![](plots/pprld3comp_05D_noiselessall.svg)
 
 ## Conclusions
 
