@@ -1,6 +1,6 @@
 ---
-title: "WAE - raport z eksperymentów"
-author: "K. Breñski, K. Trojanowski"
+title: "WAE - raport z eksperyment?w"
+author: "K. Bre?ski, K. Trojanowski"
 date: "June 15, 2017"
 output:
   html_document: default
@@ -59,8 +59,8 @@ The top left plot shows how many targets were reached for all 24 functions.The t
 
 ### DEoptim comparison
 
-
-
+![](plots/pprld3comp_05D_noiselessall.svg)
+Standard Differential Evolution algorithm from DEoptim library performs better than our DES algorithm for $n=2,3$ dimension problems. DES outperforms DEoptim in higher dimension problems for $n=5,10,20$. Significant difference between these two algorithms can be observed especially for ill-conditioned and multimodal functions.
 ## Conclusions
 
 The DES algorithm was sucessfully implemented, various parameters were tested using the BBOB optimization framework benchmark, and lastly the implementation was packaged into an R library for ease of use. As we can see from the benchmark results the DES algoritm prormed best for the parameter set of $\lambda=4n,\mu=\frac{\lambda}{4}$ and $H=6+3\sqrt{n}(b3)$. We can also identify that the DES worked best for function #? //TODO ktore? and worst for function #? //TODO ktore?.
